@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
 backend/scratch.ts
 backend/scratch-server.ts
 src/Scratch.tsx

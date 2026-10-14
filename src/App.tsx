@@ -40,13 +40,6 @@ export default function App() {
         </aside>
 
         <main className="chart-panel">
-          {/* TODO 5: if activeSymbol is set, render:
-              - a .chart-panel-header with the symbol name, latest price,
-                and the +/- change (green if up, red if down -- see
-                .change-up / .change-down in App.css)
-              - a .chart-container div wrapping <CandlestickChart candles={candles} />
-              Otherwise render a .chart-placeholder saying something like
-              "Waiting for data…" */}
           {activeSymbol ? (
             <>
               <header className="chart-panel-header">
@@ -68,12 +61,5 @@ export default function App() {
         </main>
       </div>
     </div>
-  );
-
-  //debug code
-  return (
-    <pre style={{ color: 'white', padding: 16 }}>
-      {JSON.stringify({ status, symbols, seriesBySymbol, latestPriceBySymbol }, null, 2)}
-    </pre>
   );
 }

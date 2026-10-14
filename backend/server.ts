@@ -8,7 +8,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 
 import { CandleAggregator } from './candleAggregator.js';
 import { startSimulatedFeed } from './simulateFeed.js';
-import { startAlpacaFeed } from './alpacaClient.js'; // uncomment once you build step 9
+import { startAlpacaFeed } from './alpacaClient.js';
 
 import type { Candle, ServerMessage } from './types.js';
 

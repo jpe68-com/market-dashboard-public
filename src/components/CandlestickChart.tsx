@@ -11,12 +11,6 @@ import {
 } from 'lightweight-charts';
 import type { Candle } from '../types';
 
-// See ROADMAP.md step 7 -- do this last. Test with a hardcoded fake
-// `candles` array before wiring it to the live WebSocket data, so you're
-// only debugging the charting library at first, not two things at once.
-//
-// lightweight-charts docs: https://tradingview.github.io/lightweight-charts/
-
 const SMA_PERIOD = 10;
 
 interface Props {
@@ -34,11 +28,8 @@ function toChartTime(msTimestamp: number): UTCTimestamp {
   return Math.floor(msTimestamp / 1000) as UTCTimestamp;
 }
 
-//for each index i from (period - 1) to the end, average the
-// `close` of the last `period` candles ending at i, and push
-// { time: toChartTime(candles[i].time), value: <that average> }.
-// Return the resulting array. (There's no SMA point for the first
-// `period - 1` candles -- not enough data yet.)
+// Sliding-window simple moving average of closes. O(n); the first
+// `period - 1` candles have no SMA point.
 function computeSMA(candles: Candle[], period: number) {
 
   let total = 0;

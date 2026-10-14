@@ -30,7 +30,6 @@ export function useMarketSocket(): MarketSocketState {
     setStatus('connecting');
 
     newSocket.onopen = () => {
-      console.timeEnd('reconnect');
       setStatus('open');
       backoffRef.current = 1000;
     }
@@ -72,7 +71,6 @@ export function useMarketSocket(): MarketSocketState {
     newSocket.onclose = () => {
       if (!isMountedRef.current || socketRef.current !== newSocket) return;
       setStatus('closed');
-      console.time('reconnect');   // add this line
       reconnectTimerRef.current = setTimeout(() => {
         backoffRef.current = Math.min(backoffRef.current * 2, MAX_BACKOFF_MS);
         connect();
