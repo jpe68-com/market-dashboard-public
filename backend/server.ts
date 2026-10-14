@@ -17,7 +17,7 @@ const SYMBOLS = (process.env.SYMBOLS || 'AAPL,TSLA,NVDA').split(',').map((s) => 
 const DATA_SOURCE = process.env.DATA_SOURCE || 'simulate';
 
 const app = express();
-app.get('/health', (req, res) => res.json({ "status": "ok" }));
+app.get('/health', (_req, res) => res.json({ "status": "ok" }));
 const server = createServer(app);
 const wss = new WebSocketServer({ server });
 
